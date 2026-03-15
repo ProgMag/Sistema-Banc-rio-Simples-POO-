@@ -8,66 +8,75 @@ public class Main {
         ContaPoupanca cont2 = new ContaPoupanca();
         int opcao = 0;
 
-        System.out.println("""
-                0 - Conta corrente
-                2 - Conta poupança
-                """);
-        System.out.println("Digite a opção desejada");
-        opcao = sc.nextInt();
-
         while (opcao != 4) {
+            System.out.println("""
+                    0 - Conta corrente
+                    2 - Conta poupança
+                    4 - Sair
+                    Digite a opção desejada:
+                    """);
+            opcao = sc.nextInt();
+
             if (opcao == 0) {
-                System.out.println("""
-                         --- Conta Corrente ---
-                                1 - Deposito
-                                2 - Saque
-                                3 - Saldo
-                                4 - sair
-                        Digite a opção desejada
-                        """);
-                int escolha1 = sc.nextInt();
-                switch (escolha1) {
-                    case 1 -> {
-                        System.out.println("Qual valor você desejaria depositar");
-                        double valorDeposito = sc.nextInt();
-                        cont.depositar(valorDeposito);
+                int escolha1 = 0;
+                while (escolha1 != 4) {
+                    System.out.println("""
+                             --- Conta Corrente ---
+                                    1 - Deposito
+                                    2 - Saque
+                                    3 - Saldo
+                                    4 - Sair
+                            Digite um numero
+                            """);
+                    escolha1 = sc.nextInt();
+
+                    switch (escolha1) {
+                        case 1 -> {
+                            System.out.println("Qual valor você desejaria depositar");
+                            double valorDeposito = sc.nextInt();
+                            cont.depositar(valorDeposito);
+                        }
+                        case 2 -> {
+                            System.out.println("Qual valor você desejaria sacar");
+                            double valorSacar = sc.nextDouble();
+                            cont.sacar(valorSacar);
+                        }
+                        case 3 -> System.out.println(cont.getSaldo());
+                        case 4 -> System.out.println("Encerrando conta corrente");
                     }
-                    case 2 -> {
-                        System.out.println("Qual valor você desejaria sacar");
-                        double valorSacar = sc.nextDouble();
-                        cont.sacar(valorSacar);
-                    }
-                    case 3 -> System.out.println(cont.getSaldo());
-                    case 4 -> System.out.println("Encerrando conta bancaria de: " + cont.getTitular());
                 }
             }
-            
             if (opcao == 2) {
-                System.out.println("""
-                         --- Conta Poupança ---
-                                1 - Deposito
-                                2 - Saque
-                                3 - Saldo
-                                4 - sair
-                            Digite a opção desejada
-                        """);
-                int escolha2 = sc.nextInt();
-                switch (escolha2) {
-                    case 1 -> {
-                        System.out.println("Qual valor você desejaria depositar");
-                        double valorDeposito = sc.nextInt();
-                        cont2.depositar(valorDeposito);
+                int escolha2 = 0;
+
+                while (escolha2 != 4) {
+                    System.out.println("""
+                             --- Conta Poupança ---
+                                    1 - Deposito
+                                    2 - Saque
+                                    3 - Saldo
+                                    4 - Sair
+                                Digite um numero
+                            """);
+                    escolha2 = sc.nextInt();
+                    switch (escolha2) {
+                        case 1 -> {
+                            System.out.println("Qual valor você desejaria depositar");
+                            double valorDeposito = sc.nextInt();
+                            cont2.depositar(valorDeposito);
+                        }
+                        case 2 -> {
+                            System.out.println("Qual valor você desejaria sacar");
+                            double valorSacar = sc.nextDouble();
+                            cont2.sacar(valorSacar);
+                        }
+                        case 3 -> System.out.println(cont2.getSaldo());
+                        case 4 -> System.out.println("Encerrando conta poupança");
                     }
-                    case 2 -> {
-                        System.out.println("Qual valor você desejaria sacar");
-                        double valorSacar = sc.nextDouble();
-                        cont2.sacar(valorSacar);
-                    }
-                    case 3 -> System.out.println(cont2.getSaldo());
-                    case 4 -> System.out.println("Encerrando conta bancaria de: " + cont2.getTitular());
                 }
             }
         }
+        System.out.println("Fechando banco");
         sc.close();
     }
 }
