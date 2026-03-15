@@ -4,7 +4,7 @@ public class ContaCorrente extends Conta {
     public void sacar(double valor) {
         double taxa = 5d;
         double totalADescontar = valor + taxa;
-        System.out.println("Taxa por saque: " + taxa + " reias");
+        System.out.println("Taxa por saque: " + taxa + " reais");
         descontarDoSaldo(totalADescontar); 
     }
 }
